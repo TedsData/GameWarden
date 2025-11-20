@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Result</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Tab Styles -->
+  <style>
+    .nav-pills {
+      justify-content: center;
+    }
+
+    .nav-pills .nav-link {
+      background-color: #9845db;
+      color: #333;
+      margin-right: 5px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .nav-pills .nav-link.active {
+      background-color: #0bb8b8 !important;
+      color: #333 !important;
+      font-weight: 700;
+      text-shadow: none;
+    }
+
+    .nav-pills .nav-link:hover {
+      background-color: #cce5ff;
+      color: #000;
+    }
+
+    
+    .list-group-item {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tabs -->
+  <ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" href="/">Biography</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/upload">Upload</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/resume">Resume</a>
+  </li>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/General_Projects">General Projects</a>
+  </li>
+</ul>
+
+  <!-- Results Section -->
+  <div class="container mt-5 text-center">
+    <h1>Prediction Result</h1>
+    <p>This email is: <strong>{{ result }}</strong></p>
+
+    {% if labels %}
+      <h2>Feature Labels:</h2>
+      <div class="container mt-4" style="max-width: 400px;">
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm text-start">
+            <thead class="table-light">
+              <tr>
+                <th>Feature</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for key, value in labels.items() %}
+                <tr>
+                  <td><strong>{{ key }}</strong></td>
+                  <td>{{ value }}</td>
+               </tr>
+             {% endfor %}
+           </tbody>
+         </table>
+       </div>
+    {% endif %}
+  
+
+    <a href="/upload" class="btn btn-primary mt-4">Try another file</a>
+  </div>
+
+</body>
+</html>

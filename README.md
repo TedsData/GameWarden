@@ -1,2 +1,2 @@
 # GameWarden
-Phishing email model
+Phishing email ML model
